@@ -65,6 +65,8 @@ az network application-gateway create \
 --waf-policy $GENERAL_WAF_POLICY \
 --priority 1
 
+APP_GW_ID=$(az network application-gateway show --name $APP_GW_NAME --resource-group $RESOURCE_GROUP --query id -o tsv)
+
 # Create user identity for the AKS cluster
 az identity create --name $AKS_NAME-identity --resource-group $RESOURCE_GROUP
 IDENTITY_ID=$(az identity show --name $AKS_NAME-identity --resource-group $RESOURCE_GROUP --query id -o tsv)
